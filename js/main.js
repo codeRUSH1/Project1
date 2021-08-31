@@ -1,22 +1,35 @@
 function init() {
 
 // Global variables
-const grid = document.querySelector('grid')
+const grid = document.querySelector('.grid')
 const width = 9
 const cellSize = width * width 
 const cells = []
-const startingPosition = 0
+const spaceShipClass = 'spaceShip'
+const startingPosition = 0 // Cell position for the start of the game
+// Current position which is updated on every move
 
-function gridCreation() {
+
+function gridCreation(startPos) {
     for (let i = 0; i < cellSize; i++) {
         const cell = document.createElement('div')
-        cell.innerHTML = i
+        cell.innerText = i
         grid.appendChild(cell)
         cells.push(cell)
     }
+    startGame(startPos)
 }
 
-gridCreation()
+function startGame(cellPosition) {
+    cells[cellPosition].classList.add(spaceShipClass) 
+}
+
+gridCreation(startingPosition)
+
+
+
+
+
 
 
 

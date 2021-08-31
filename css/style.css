@@ -13,16 +13,27 @@
 .grid{
     display: flex;
     flex-wrap: wrap;
-    height: 100px;
-    width: 100px;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 500px;
     box-shadow: 0 0 20px 0 rgba(0,0,0,0.2)
 }
 
 .grid div{
-    width: 10%;
-    height: 10%;
+    width: calc(100% / 9);
+    height: calc(100% / 9);
     border: 1px solid rgba(0,0,0,0.2);
 }
+
+.spaceShip {
+    background-image: url('img/178-1785152_spaceship-space-invaders-png-transparent-png.png');
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 
 
 
