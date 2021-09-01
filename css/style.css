@@ -4,10 +4,26 @@
     box-sizing: border-box;
 }
 
+button {
+    height: 50px;
+    width: 150px;
+    font-size: 40px;
+    background-color: rgb(196, 196, 196);
+}
+
+.trackers {
+    display: flex;
+}
+
+h2 {
+    padding: 50px; 
+}
+
 .wrap{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .grid{
@@ -27,13 +43,21 @@
 }
 
 .spaceShip {
-    background-image: url('img/178-1785152_spaceship-space-invaders-png-transparent-png.png');
+    background-image: url('../img/178-1785152_spaceship-space-invaders-png-transparent-png.png');
     background-size: 90%;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+.aliens {
+    background-image: url('../img/it_photo_85339.jpeg');
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-
-
-
+.bullets {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+}

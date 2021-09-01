@@ -1,32 +1,108 @@
 function init() {
 
+const testBtn = document.getElementById('test')
+
 // Global variables
+// grid
 const grid = document.querySelector('.grid')
 const width = 9
 const cellSize = width * width 
 const cells = []
-const spaceShipClass = 'spaceShip'
-const startingPosition = 0 // Cell position for the start of the game
+
+// Ship class and position
+const spaceShipClass = 'spaceShip' 
+const startingPositionShip = 76
+let currentPositionShip = startingPositionShip
+
+// Aliens class and position
+const aliensClass = 'aliens'
+const Aliens = []
+const aliensArray = parseInt(width * 0.8)
+const startingPositionAlien = 0
+let currentAlienPositions = startingPositionAlien
+
+// Keeping track of player lives
+const playerLives = document.getElementById('playerLives')
+playerLivesTracker = 3
+playerLives.innerHTML = playerLivesTracker
+function removeLives() {
+playerLivesTracker--
+}
+
+
+// Keeping track of player score
+const playerScore = document.getElementById('playerScore')
+playerScoreTracker = 0
+playerScore.innerHTML = playerScoreTracker
+function addScore() {
+    playerScoreTracker += 100
+    }
+
+// bullets/projectiles
+const bullets = 'bullets'
+
+
+
+// Cell position for the start of the game
+ /* const Aliens = [2, 3, 4, 5, 6, 11, 12, 13, 14, 15] */
 // Current position which is updated on every move
 
 
 function gridCreation(startPos) {
     for (let i = 0; i < cellSize; i++) {
         const cell = document.createElement('div')
-        cell.innerText = i
+        cell.innerHTML = i
         grid.appendChild(cell)
         cells.push(cell)
     }
-    startGame(startPos)
+        startShip(startPos)
+
+        setTimeout(()=>{
+
+            // addEnemies
+            for (let i = 2; i < aliensArray; i++) {
+            cells[i].classList.add(aliensClass)
+            }
+            
+            //autoMoveEnemy
+}, 0)
 }
 
-function startGame(cellPosition) {
+function startShip(cellPosition) {
     cells[cellPosition].classList.add(spaceShipClass) 
-}
+    }
 
-gridCreation(startingPosition)
+    function removeShip(removePosition){
+        cells[removePosition].classList.remove(spaceShipClass)
+    }
 
 
+    function movingSpaceShip(event){
+
+        removeShip(currentPositionShip)
+    
+        const key = event.keyCode 
+        const rightKey = 39
+        const leftKey = 37
+        const spaceBar = 32
+    
+        if (key === rightKey && currentPositionShip % width !== width - 1){
+        currentPositionShip++
+        } else if (key === leftKey && currentPositionShip % width !== 0){
+        currentPositionShip-- 
+        } else if (key === spaceBar) {
+            currentPositionShip
+        spaceShip.classList.add(bullets)    
+        }
+        startShip(currentPositionShip)
+    }
+
+    document.addEventListener('keydown', movingSpaceShip)
+
+    gridCreation(startingPositionShip)
+
+
+    
 
 
 
@@ -41,10 +117,10 @@ gridCreation(startingPosition)
 
 
 // Player score should be global, and always start at 0
-const playerScore = 0
+// const playerScore = 0
 
 // Starting amount of player lives for each game
-const PlayerLives = 3
+// const PlayerLives = 3
 
 // What happens when start game button is clicked?
 /*
