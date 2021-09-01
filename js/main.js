@@ -9,7 +9,7 @@ const width = 9
 const cellSize = width * width 
 const cells = []
 
-// Ship class and position
+// Ship class and position\
 const spaceShipClass = 'spaceShip' 
 const startingPositionShip = 76
 let currentPositionShip = startingPositionShip
