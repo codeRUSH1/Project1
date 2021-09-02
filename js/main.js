@@ -29,7 +29,6 @@ function removeLives() {
 playerLivesTracker--
 }
 
-
 // Keeping track of player score
 const playerScore = document.getElementById('playerScore')
 playerScoreTracker = 0
@@ -39,14 +38,7 @@ function addScore() {
     }
 
 // bullets/projectiles
-const bullets = 'bullets'
-
-
-
-// Cell position for the start of the game
- /* const Aliens = [2, 3, 4, 5, 6, 11, 12, 13, 14, 15] */
-// Current position which is updated on every move
-
+const bulletsClass = 'bullets'
 
 function gridCreation(startPos) {
     for (let i = 0; i < cellSize; i++) {
@@ -58,16 +50,12 @@ function gridCreation(startPos) {
         startShip(startPos)
 
         setTimeout(()=>{
-
-            // addEnemies
             for (let i = 2; i < aliensArray; i++) {
             cells[i].classList.add(aliensClass)
             }
-            
-            //autoMoveEnemy
 }, 0)
 }
-
+// Player/Ship add + remove
 function startShip(cellPosition) {
     cells[cellPosition].classList.add(spaceShipClass) 
     }
@@ -76,6 +64,45 @@ function startShip(cellPosition) {
         cells[removePosition].classList.remove(spaceShipClass)
     }
 
+    // Aliens add + remove
+    function startAliens(cellPositions){
+        cells[cellPositions].classList.add(aliensClass)
+    }
+    function removeAliens(cellPositions){
+        cells[cellPositions].classList.remove(aliensClass)
+    }
+
+      // bullets/projectiles add + remove
+    function addingProjectiles(cellPosition){
+        cells[cellPosition].classList.add(bulletsClass)
+    } 
+    function removeProjectiles(cellPosition){
+        cells[cellPosition].classList.remove(bulletsClass)
+    }
+    
+    function movingProjectiles(){
+        const bulletStartingPosition = currentPositionShip - 12
+        let bulletCurrentPosition = bulletStartingPosition
+
+        addingProjectiles(bulletStartingPosition)
+
+    const movingProjectile = setInterval(()=>{
+        if (bulletCurrentPosition === currentAlienPositions) { 
+        removeProjectiles(bulletCurrentPosition)
+        removeAliens(currentAlienPositions)
+        addScore()
+        clearInterval(movingProjectile)
+        } else if (bulletCurrentPosition !== currentAlienPositions && bulletCurrentPosition >= 10) { 
+        removeProjectiles(bulletCurrentPosition)
+        bulletCurrentPosition -= 10
+        addingProjectiles(bulletCurrentPosition)
+        } else { 
+        removeAliens(bulletCurrentPosition)
+        removeProjectiles(bulletCurrentPosition)
+        clearInterval(movingProjectile)
+        } 
+    }, 0)
+        }
 
     function movingSpaceShip(event){
 
@@ -91,8 +118,8 @@ function startShip(cellPosition) {
         } else if (key === leftKey && currentPositionShip % width !== 0){
         currentPositionShip-- 
         } else if (key === spaceBar) {
-            currentPositionShip
-        spaceShip.classList.add(bullets)    
+
+        movingProjectiles()
         }
         startShip(currentPositionShip)
     }
@@ -101,14 +128,7 @@ function startShip(cellPosition) {
 
     gridCreation(startingPositionShip)
 
-
-    
-
-
-
-
-
-
+/* PLAM */
 
 // Start button for the game, which will have an event listener 'click'
 
