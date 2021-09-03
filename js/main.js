@@ -190,6 +190,15 @@ startGameButton.addEventListener('click', startGame)
 
 }
 
+// REMAINING TASKS
+/*
+0. Fix centering css
+1. Add enemy bullets
+2. Make bullet drops random
+3. Take off lives for 
+*/
+
+
   /* Initial PLAN */
 
   // Start button for the game, which will have an event listener 'click'
