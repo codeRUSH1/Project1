@@ -172,7 +172,7 @@ function gameOver() {
 }
 }
 
-const aliensHittingShip = setInterval(gameOver, 200)
+const aliensHittingShip = setInterval(gameOver, 1000)
 function gameOverTimer() {
 aliensHittingShip
 }
